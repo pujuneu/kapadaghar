@@ -1,0 +1,19 @@
+
+        .navbar{
+            background-color:red;
+            padding:15px;
+        }
+        .menu{
+        text-align:right;
+    }
+    .menu li{
+        display: inline;
+        margin: 10px;
+    }
+    .menu a{
+        text-decoration: none;
+        color: white;
+        font-size: 20px;
+    }
+
+
