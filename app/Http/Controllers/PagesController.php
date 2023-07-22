@@ -33,6 +33,13 @@ class PagesController extends Controller
         return view('viewproduct', compact('product', 'categories'));
     }
 
+    //controller for route /category/{id}
+    public function category($id){
+        $category = Category::find($id);
+        $products = $category->products()->paginate(2);
+        return view('productCategory', compact('category', 'products'));
+    }
+
     public function products()
     {
         // Retrieve all products

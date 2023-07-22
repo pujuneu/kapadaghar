@@ -12,4 +12,12 @@ class Category extends Model
         'name',
         'priority'
     ];
+
+    public function products(){
+        return $this -> hasMany(Product::class);
+    }
+
+    public function subCategory(){
+        return $this -> hasMany(SubCategory::class);
+    }
 }

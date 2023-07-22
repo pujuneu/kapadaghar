@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -38,13 +39,26 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-      
-
+        // Create a new order
+        $order = new Order;
+        $order->user_id = auth()->user()->id;
+        $order->product_id = $request->product_id;
+        $order->quantity = $request->quantity;
+        $order->save();
+    
+        // Remove the item from the cart
+        $cartItem = Cart::where('user_id', auth()->user()->id)
+            ->where('product_id', $request->product_id)
+            ->first();
         
-
-
-       
+        if ($cartItem) {
+            $cartItem->delete();
+        }
+    
+        return redirect()->back();
     }
+    
+    
     
 
     /**

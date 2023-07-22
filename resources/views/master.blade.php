@@ -13,6 +13,9 @@
 </head>
 
 <body>
+    @php
+    $categories = App\Models\Category::all();
+@endphp
     <div class="flex px-24 justify-between bg-gray-300 p-2 text-lg">
 
         @if (auth()->user())
@@ -51,7 +54,21 @@
         </ul>
     </nav>
 
-    @yield('content')
+    <div class="flex">
+        <div class="flex-grow">
+            @yield('content')
+        </div>
+        <div class="px-2 py-5 bg-slate-100">
+            <h1 class="border-b-2 w-fit">Available Categories</h1>
+            <ul class="text-slate-800 text-sm">
+                @foreach ($categories as $category)
+                    <li>
+                        <a href="{{ route('category', $category->id) }}">{{ $category->name }}</a>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
 
 
     <footer class="footer">

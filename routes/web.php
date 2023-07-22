@@ -9,8 +9,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrderController;
-use App\Models\SubCategory;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -65,14 +65,22 @@ Route::middleware('auth')->group(function () {
   Route::get('/subcategory/index', [SubCategoryController::class, 'index'])->name('subcategory.index');
   Route::get('/subcategory/create', [SubCategoryController::class, 'create'])->name('subcategory.create');
   Route::post('/subcategory/destroy', [SubCategoryController::class, 'destroy'])->name('subcategory.destroy');
-  Route::post('/subcategory/store', [SubCategory::class, 'store'])
+  Route::post('/subcategory/store', [SubCategoryController::class, 'store'])
     ->name('subcategory.store');
+  Route::get('/subcategory/{id}/edit', [SubCategoryController::class, 'edit'])->name('subcategory.edit');
+  Route::post('/subcategory{id}/update', [SubCategoryController::class, 'update'])->name('subcategory.update');
 
 
   //Brands
 
   Route::get('/brands/index', [BrandsController::class, 'index'])->name('brands.index');
   Route::get('/brands/create', [BrandsController::class, 'create'])->name('brands.create');
+  Route::post('/brands/store', [BrandsController::class, 'store'])
+    ->name('brands.store');
+  Route::get('/brands/{id}/edit', [BrandsController::class, 'edit'])
+    ->name('brands.edit');
+  Route::post('/brands/{id}/update', [BrandsController::class, 'update'])
+    ->name('brands.update');
   Route::post('/brands/destroy', [BrandsController::class, 'destroy'])
     ->name('brands.destroy');
 
@@ -90,16 +98,16 @@ Route::middleware('auth')->group(function () {
     ->name('notice.destroy');
 
 
-    //order
-    Route::get('/order/index',[OrderController::class,'index'])->name('order.index');
-    Route::get('/order/create', [OrderController::class, 'create'])
+  //order
+  Route::get('/order/index', [OrderController::class, 'index'])->name('order.index');
+  Route::get('/order/create', [OrderController::class, 'create'])
     ->name('order.create');
-    Route::post('/order/store', [OrderController::class, 'store'])
+  Route::post('/order/store', [OrderController::class, 'store'])
     ->name('order.store');
-    Route::post('/order/destroy', [OrderController::class, 'destroy'])
+  Route::post('/order/destroy', [OrderController::class, 'destroy'])
     ->name('order.destroy');
-    Route::get('order',[OrderController::class,'order']);
-   Route::get('order',[OrderController::class,'store']);
+  Route::get('order', [OrderController::class, 'order']);
+  Route::get('order', [OrderController::class, 'store']);
 
 
   //Gallery
@@ -116,9 +124,14 @@ Route::middleware('auth')->group(function () {
     ->name('gallery.destroy');
 
 
+  //notification
+  Route::get('send', [NotificationController::class, "sendnotification"]);
+
+
   Route::get('/products', [PagesController::class, 'products']);
   Route::get('/carts', [CartController::class, 'index'])->name('carts.index');
   Route::post('/carts', [CartController::class, 'store'])->name('carts.store');
+  Route::get('/category/{category}', [PagesController::class, 'category'])->name('category');
 
 
   //Product

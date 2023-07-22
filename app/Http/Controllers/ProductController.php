@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -23,7 +25,8 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('product.create',compact('categories'));
+        $brands = Brand::all();
+        return view('product.create',compact('categories', 'brands'));
     }
     /**
      * Store a newly created resource in storage.
@@ -33,6 +36,7 @@ class ProductController extends Controller
         
         $data = $request->validate([
             'category_id' => 'required',
+            'brand_id' => 'required',
             'name' => 'required',
             'price' => 'numeric|required',
             'stock' => 'numeric|required',
@@ -56,7 +60,10 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $categories = Category::all(); // Assuming you have a Category model to fetch all categories
+        $products = Product::paginate(12); // Assuming you have a Product model to fetch products (adjust pagination as needed)
+    
+        return view('products', compact('products', 'categories'));
     }
     /**
      * Show the form for editing the specified resource.

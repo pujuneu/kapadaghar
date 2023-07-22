@@ -2,29 +2,29 @@
 @section('content')
 @include('layouts.message')
 
-    <h2 class="font-bold text-4xl text-blue-700">SubCategories</h2> 
+    <h2 class="font-bold text-4xl text-blue-700">Categories</h2> 
     <hr class="h-1 bg-blue-200">
 
     <div class="my-4 text-right px-10">
-        <a href="{{route('subcategory.create')}}" class="bg-amber-400 text-black px-4 py-2 rounded-lg shadow-md hover:shadow-amber-300">Add SubCategory</a>
+        <a href="{{route('category.create')}}" class="bg-amber-400 text-black px-4 py-2 rounded-lg shadow-md hover:shadow-amber-300">Add Category</a>
     </div>
 
     <table id="mytable" class="display">
         <thead>
             <th>Order</th>
-            <th>SubCategory Name</th>
+            <th>Category Name</th>
             <th>Action</th>
         </thead>
         <tbody>
-            @foreach($subcategories as $subcategory)
+            @foreach($categories as $category)
             <tr>
-                <td>{{$subcategory->priority}}</td>
-                <td>{{$subcategory->name}}</td>
+                <td>{{$category->priority}}</td>
+                <td>{{$category->name}}</td>
                 <td>
-                    <a href="{{route('subcategory.edit',$subcategory->id)}}" class="bg-blue-600 text-white px-2 py-1 rounded shadow hover:shadow-blue-400">Edit</a>
-                    {{-- <a onclick="return confirm('Are you sure to delete?')" href="{{route('subcategory.destroy',$subcategory->id)}}" class="bg-red-600 text-white px-2 py-1 rounded shadow hover:shadow-red-400">Delete</a> --}}
+                    <a href="{{route('category.edit',$category->id)}}" class="bg-blue-600 text-white px-2 py-1 rounded shadow hover:shadow-blue-400">Edit</a>
+                    {{-- <a onclick="return confirm('Are you sure to delete?')" href="{{route('category.destroy',$category->id)}}" class="bg-red-600 text-white px-2 py-1 rounded shadow hover:shadow-red-400">Delete</a> --}}
 
-                    <a onclick="showDelete('{{$subcategory->id}}')" class="bg-red-600 text-white px-2 py-1 rounded shadow hover:shadow-red-400 cursor-pointer">Delete</a>
+                    <a onclick="showDelete('{{$category->id}}')" class="bg-red-600 text-white px-2 py-1 rounded shadow hover:shadow-red-400 cursor-pointer">Delete</a>
                 </td>
             </tr>
             @endforeach
@@ -35,7 +35,7 @@
     <div id="deleteModal" class="fixed hidden left-0 top-0 right-0 bottom-0 bg-opacity-50 backdrop-blur-sm bg-blue-400">
         <div class="flex h-full justify-center items-center">
             <div class="bg-white p-4 rounded-lg">
-                <form action="{{route('subcategory.destroy')}}" method="POST">
+                <form action="{{route('category.destroy')}}" method="POST">
                     @csrf
                     <p class="font-bold text-2xl">Are you Sure to Delete?</p>
                     <input type="hidden" name="dataid" id="dataid" value="">

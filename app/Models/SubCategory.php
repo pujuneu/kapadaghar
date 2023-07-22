@@ -12,4 +12,7 @@ class SubCategory extends Model
         'name',
         'priority'
     ];
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
 }

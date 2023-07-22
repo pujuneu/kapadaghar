@@ -13,9 +13,13 @@
                     <p>Quantity: {{ $cart->quantity }}</p>
                 
                     
-                    <a href="order" class="text-blue-500 hover:text-blue-600">
-                        <button type="button" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">Order Now</button>
-                    </a>
+                    <form action="{{ route('order.store') }}" method="post">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $cart -> product->id }}">
+                        <input type="hidden" name="quantity" value="{{ $cart->quantity }}">
+                        <button type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded-lg shadow">Order</button>
+                    </form>
+                    
                     
                 
                 </div>

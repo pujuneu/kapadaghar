@@ -18,20 +18,25 @@
         @enderror
 
 
-        <input type="number" placeholder="Price" name="price" class="w-full rounded-lg border-gray-300 my-2" value="{{old('price')}}">
+        <input type="number" min="1"  placeholder="Price" name="price" class="w-full rounded-lg border-gray-300 my-2" value="{{old('price')}}">
         @error('price')
             <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
+           
         @enderror
-        <select name="category_id"id=""class="w-full rounded-lg border-gray-300 my-2">
-            @foreach ($categories as $category)
-            <option value="{{$category->id}}">{{$category->name}}</option>
+        
+        <select name="brand_id" id=""class="w-full rounded-lg border-gray-300 my-2">
+            @foreach ($brands as $brand)
+            <option value="{{$brand->id}}">{{$brand->name}}</option>
                 
             @endforeach
+        </select>
         
 
-        <input type="number" placeholder="Stock" name="stock" class="w-full rounded-lg border-gray-300 my-2" value="{{old('stock')}}">
+        <input type="number" min="1" max="50" placeholder="Stock" name="stock" class="w-full rounded-lg border-gray-300 my-2" value="{{old('stock')}}">
+        
         @error('stock')
             <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
+            
         @enderror
 
 
