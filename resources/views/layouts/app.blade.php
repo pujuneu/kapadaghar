@@ -17,6 +17,8 @@
         <link rel="stylesheet" href="{{asset('datatable/datatables.css')}}">
         <script src="{{asset('datatable/jquery-3.6.0.js')}}"></script>
         <script src="{{asset('datatable/datatables.js')}}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        
     </head>
     <body class="font-sans antialiased">
     
@@ -28,7 +30,7 @@
                
                 <h3>Hello, {{auth()->user()->role}}</h3>
                    <div>
-                    <a href="" class="text-xl font-bold border-b-2 block ml-4 px-2
+                    <a href="{{route('dashboard')}}" class="text-xl font-bold border-b-2 block ml-4 px-2
                     py-1 hover:bg-blue-500 hover:text-white">Dashboard</a>
 
                     <a href="{{route('notice.index')}}" class="text-xl font-bold border-b-2 block ml-4 px-2

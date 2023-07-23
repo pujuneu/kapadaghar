@@ -34,7 +34,7 @@ Route::get('/viewproduct/{product}', [PagesController::class, 'viewproduct'])->n
 Route::get('/userlogin', [PagesController::class, 'userlogin'])->name('userlogin');
 
 Route::get('/userregister', [UserController::class, 'userregister'])->name('user.register');
-Route::post('/userregister', [UserController::class, 'userstore'])->name('user.register');
+Route::post('/userregister', [UserController::class, 'userstore'])->name('user.store');
 
 Route::get('/dashboard', function () {
   return view('dashboard');
@@ -65,8 +65,14 @@ Route::middleware('auth')->group(function () {
   Route::get('/subcategory/index', [SubCategoryController::class, 'index'])->name('subcategory.index');
   Route::get('/subcategory/create', [SubCategoryController::class, 'create'])->name('subcategory.create');
   Route::post('/subcategory/destroy', [SubCategoryController::class, 'destroy'])->name('subcategory.destroy');
-  Route::post('/subcategory/store', [SubCategory::class, 'store'])
+  Route::post('/subcategory/store', [SubCategoryController::class, 'store'])
     ->name('subcategory.store');
+    Route::get('/subcategory/{id}/edit', [SubCategoryController::class, 'edit'])
+    ->name('subcategory.edit');
+    Route::post('/subcategory/{id}/update', [SubCategoryController::class, 'update'])
+    ->name('subcategory.update');
+    Route::post('/subcategory/fetch', [SubCategoryController::class, 'fetch'])
+    ->name('subcategory.fetch');
 
 
   //Brands
@@ -75,6 +81,12 @@ Route::middleware('auth')->group(function () {
   Route::get('/brands/create', [BrandsController::class, 'create'])->name('brands.create');
   Route::post('/brands/destroy', [BrandsController::class, 'destroy'])
     ->name('brands.destroy');
+    Route::post('/brands/store', [BrandsController::class, 'store'])
+    ->name('brands.store');
+    Route::get('/brands/{id}/edit', [BrandsController::class, 'edit'])
+    ->name('brands.edit');
+  Route::post('/brands/{id}/update', [BrandsController::class, 'update'])
+    ->name('brands.update');
 
   //Notice
   Route::get('/notice', [NoticeController::class, 'index'])->name('notice.index');

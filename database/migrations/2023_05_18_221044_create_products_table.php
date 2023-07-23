@@ -20,7 +20,7 @@ return new class extends Migration
             $table->float('price');
             $table->string('photopath');
             $table->text('description');
-            $table->foreignId('category_id')->constrained();
+            $table->foreignId('sub_category_id')->constrained();
             $table->timestamps();
         });
     }

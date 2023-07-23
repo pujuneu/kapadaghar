@@ -17,6 +17,7 @@
             <th>Price</th>
             <th>Stock</th>
             <th>Category</th>
+            <th>Sub category</th>
             <th>Action</th>
         </thead>
         <tbody>
@@ -27,8 +28,11 @@
                 <td><img class="w-44" src="{{ asset('images/products/'.$product->photopath) }}" alt="image"></td>
                 <td>{{$product->description}}</td>
                 <td>{{$product->price}}</td>
+
                 <td>{{$product->stock}}</td>
                 <td>{{$product->category->name}}</td>
+                <td>{{$product->sub_category->name}}</td>
+
                 <td>
                     <a href="{{route('product.edit',$product->id)}}" class="bg-blue-600 text-white px-2 py-1 rounded shadow hover:shadow-blue-400">Edit</a>
                     <a onclick="showDelete('{{$product->id}}')" class="bg-red-600 text-white px-2 py-1 rounded shadow hover:shadow-red-400 cursor-pointer">Delete</a>
