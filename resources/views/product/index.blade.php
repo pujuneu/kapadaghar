@@ -16,6 +16,7 @@
             <th>Description</th>
             <th>Price</th>
             <th>Stock</th>
+            <th>Brand</th>
             <th>Category</th>
             <th>Sub category</th>
             <th>Action</th>
@@ -30,6 +31,7 @@
                 <td>{{$product->price}}</td>
 
                 <td>{{$product->stock}}</td>
+                <td>{{$product->brand->name}}</td>
                 <td>{{$product->category->name}}</td>
                 <td>{{$product->sub_category->name}}</td>
 
@@ -50,13 +52,7 @@
                     @csrf
                     <p class="font-bold text-2xl">Are you Sure to Delete?</p>
                     <input type="hidden" name="dataid" id="dataid" value="">
-                    <div class="flex justify-center">
-                        <div class="bg-white p-4 rounded-lg">
-                            <form action="{{route('product.destroy')}}" method="POST">
-                                @csrf
-                                <p class="font-bold text-2xl">Are you Sure to Delete?</p>
-                                <input type="hidden" name="dataid" id="dataid" value="">
-                                <div class="flex justify-center">
+                    
                                     <input type="submit" value="Yes" class="bg-blue-600 text-white px-4 py-2 mx-2 rounded-lg cursor-pointer">
                                     <a onclick="hideDelete()" class="bg-red-600 text-white px-4 py-2 mx-2 rounded-lg cursor-pointer">No</a>
                                 </div>

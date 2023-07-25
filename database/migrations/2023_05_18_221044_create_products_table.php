@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('photopath');
             $table->text('description');
             $table->foreignId('sub_category_id')->constrained();
+            $table->foreignId('brand_id')->constrained();
             $table->timestamps();
         });
     }

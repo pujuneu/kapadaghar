@@ -112,6 +112,7 @@ Route::middleware('auth')->group(function () {
     ->name('order.destroy');
     Route::get('order',[OrderController::class,'order']);
    Route::get('order',[OrderController::class,'store']);
+   Route::get('myorders',[OrderController::class,'myorders'])->name('order.myorders');
 
 
   //Gallery

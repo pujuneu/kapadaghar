@@ -11,6 +11,8 @@
                     <img src="{{ asset('images/products/' . $product->photopath) }}" alt="{{ $product->name }}"
                         class="w-48 h-48 object-cover mb-4 rounded-lg">
                     <h3 class="text-lg font-bold">{{ $product->name }}</h3>
+                    <h3 class="text-lg font-thin">{{ $product->brand->name }}</h3>
+
                     <p class="text-gray-600">
                         @if ($product->oldprice != '')
                             <span class="line-through">{{ $product->oldprice }}/-</span>

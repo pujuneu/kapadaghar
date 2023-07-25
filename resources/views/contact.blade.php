@@ -13,7 +13,7 @@
         
         <div class="w-1/2">
             <h2 class="text-xl font-semibold mb-2">Contact Information</h2>
-            <p>Email: info@example.com</p>
+            <p>Email: kapdaaghar@gmail.com</p>
             <p>Phone: 123-456-7890</p>
         </div>
     </div>

@@ -8,6 +8,10 @@
     <title>kapada ghar</title>
     <link rel="stylesheet" href="{{ asset('mycss/style.css') }}">
 
+    <link rel="stylesheet" href="{{asset('datatable/datatables.css')}}">
+    <script src="{{asset('datatable/jquery-3.6.0.js')}}"></script>
+    <script src="{{asset('datatable/datatables.js')}}"></script>
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -29,7 +33,7 @@
     </div>
     <nav class="navbar">
         <ul class="menu">
-            <li><a href="/home">Home</a></li>
+           
             <li><a href="/products">Products</a></li>
             
             <li><a href="/about">About Us</a></li>
@@ -54,8 +58,12 @@
     @yield('content')
 
 
+         
+      
+
+
     <footer class="footer">
-        <p>This is footer</p>
+        <p>fgf</p>
     </footer>
 
 
