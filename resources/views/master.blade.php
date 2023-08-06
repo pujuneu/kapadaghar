@@ -12,6 +12,12 @@
     <script src="{{asset('datatable/jquery-3.6.0.js')}}"></script>
     <script src="{{asset('datatable/datatables.js')}}"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -28,32 +34,10 @@
                 </form>
             </div>
         @else
-            <span><a href="{{ route('userlogin') }}">Login/Register</a></span>
+            <span><a href="{{ route('login') }}">Login/Register</a></span>
         @endif
     </div>
-    <nav class="navbar">
-        <ul class="menu">
-           
-            <li><a href="/products">Products</a></li>
-            
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/carts">Cart</a></li>
-
-
-            <li><a href="/"></a></li>
-
-            @if (auth()->user())
-                <li><a href="">{{ auth()->user()->name }}</a></li>
-                <li>
-                    <form class="inline text-white" action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button type="submit">OUT</button>
-                    </form>
-                </li>
-            @endif
-        </ul>
-    </nav>
+   <x-navbar />
 
     @yield('content')
 
@@ -63,7 +47,7 @@
 
 
     <footer class="footer">
-        <p>fgf</p>
+       
     </footer>
 
 

@@ -89,7 +89,7 @@
                     <li><a href="/products">Products</a></li>
                     
                     <li><a href="/about">About Us</a></li>
-                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
                     <li><a href="/carts">Cart</a></li>
                 </ul>
             </div>

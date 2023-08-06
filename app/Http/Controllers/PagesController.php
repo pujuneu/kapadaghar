@@ -33,12 +33,22 @@ class PagesController extends Controller
         return view('viewproduct', compact('product', 'categories'));
     }
 
-    public function products()
+    public function products(Request $request)
     {
+        // dd($request);
         // Retrieve all products
-        $products = Product::paginate(5);
+        $products = Product::where('sub_category_id',$request->sub_category_id)->paginate(5);
         return view('products', compact('products'));
     }
+
+    public function categories()
+    {
+        // Retrieve all products
+        $categories = Category::paginate(5);
+        return view('categories', compact('categories'));
+    }
+
+    
     
 
 

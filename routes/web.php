@@ -31,7 +31,6 @@ Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 
 Route::get('/viewproduct/{product}', [PagesController::class, 'viewproduct'])->name('viewproduct');
 
-Route::get('/userlogin', [PagesController::class, 'userlogin'])->name('userlogin');
 
 Route::get('/userregister', [UserController::class, 'userregister'])->name('user.register');
 Route::post('/userregister', [UserController::class, 'userstore'])->name('user.store');
@@ -59,6 +58,7 @@ Route::middleware('auth')->group(function () {
   //Route::get('/category/{id}/destroy',[CategoryController::class,'destroy'])->name('category.destroy');
 
   Route::post('/category/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
+
 
 
   //Sub-Category
@@ -112,6 +112,11 @@ Route::middleware('auth')->group(function () {
     ->name('order.destroy');
     Route::get('order',[OrderController::class,'order']);
    Route::get('order',[OrderController::class,'store']);
+   Route::get('/order/{id}/edit', [OrderController::class, 'edit'])
+   ->name('order.edit');
+   
+   Route::get('/order/{id}/details',[OrderController::class,'details'])->name('order.details');
+   Route::get('/order/status/{id}/{status}',[OrderController::class,'status'])->name('order.status');
    Route::get('myorders',[OrderController::class,'myorders'])->name('order.myorders');
 
 
@@ -129,9 +134,17 @@ Route::middleware('auth')->group(function () {
     ->name('gallery.destroy');
 
 
-  Route::get('/products', [PagesController::class, 'products']);
+  // Route::post('/products', [PagesController::class, 'products'])->name('products');
+
+  Route::post('/show_products', [PagesController::class, 'products'])->name('showproducts');
+
+  Route::post('/khaltiverify', [OrderController::class, 'khaltiverify'])->name('khaltiverify');
+  
   Route::get('/carts', [CartController::class, 'index'])->name('carts.index');
   Route::post('/carts', [CartController::class, 'store'])->name('carts.store');
+  Route::get('/categories', [PagesController::class, 'category']);
+  //route for rating & review
+  Route::post('/add-rating', [UserRatingController::class, 'addRating']);
 
 
   //Product

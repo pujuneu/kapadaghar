@@ -33,9 +33,7 @@
                     <a href="{{route('dashboard')}}" class="text-xl font-bold border-b-2 block ml-4 px-2
                     py-1 hover:bg-blue-500 hover:text-white">Dashboard</a>
 
-                    <a href="{{route('notice.index')}}" class="text-xl font-bold border-b-2 block ml-4 px-2
-                    py-1 hover:bg-blue-500 hover:text-white">Notice</a>
-
+                   
 
                     <a href="{{route('category.index')}}" class="text-xl font-bold border-b-2 block ml-4 px-2
                     py-1 hover:bg-blue-500 hover:text-white">Categories</a>
@@ -53,9 +51,7 @@
 
 
 
-                    <a href="{{route('gallery.index')}}" class="text-xl font-bold border-b-2  block ml-4 px-2
-                    py-1 hover:bg-blue-500 hover:text-white">Gallery</a>
-
+                   
                    
 
                     <a href="{{route('product.index')}}" class="text-xl font-bold border-b-2  block ml-4 px-2

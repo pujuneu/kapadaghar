@@ -2,11 +2,6 @@
 
 @section('content')
     <div class="container mx-auto py-12">
-        <div id="breadcrumb">
-<p class="font-thin my-2"> {{ $products->first()->category->name}} /  {{$products->first()->sub_category->name}}</p>
-
-<hr>
-        </div>
         <h2 class="text-3xl font-bold mb-6">Our Products</h2>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
