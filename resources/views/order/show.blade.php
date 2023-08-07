@@ -2,49 +2,50 @@
 @section('content')
 @include('layouts.message')
 
-    <h2 class="font-bold text-4xl text-blue-700">Order</h2> 
+    <h2 class="font-bold text-4xl text-blue-700">Order Details</h2> 
     <hr class="h-1 bg-blue-200">
 
-    <div class="my-4 text-right px-10">
-        <a href="{{route('order.create')}}" class="bg-amber-400 text-black px-4 py-2 rounded-lg shadow-md hover:shadow-amber-300">Add Order</a>
-    </div>
+  
 
-    <table id="mytable" class="display">
+    <table id="mytable" class="display m-3">
         <thead>
             <th>SN</th>
-            <th>Customer Name</th>
-            <th>Total Amount</th>
-            <th>Order Date</th>
-            <th>Status</th>
-            <th>Action</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
         </thead>
         <tbody>
-            @foreach($orders as $order)
+          
+            @php
+                $grandTotal =0;
+            @endphp
+@foreach ($carts as $cart)
+    
+
             <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>{{$order->user->name}}</td>
-                <td>{{$order->grand_amount}}</td>
-                <td>{{$order->date}}</td>
-                <td>{{$order->status}}</td>
-              
-<td>
-    <a href="{{route('order.show',$order->id)}}" class="bg-blue-600 text-white px-2 py-1 rounded-lg">View Details</a>
-
-@if ($order->status =='Pending')
-<a  onclick="return confirm('Are you sure to change status?')" href="{{route('order.status',[$order->id,"Processing"])}}" class="bg-green-600 text-white px-2 py-1 rounded-lg">Processing</a>
-
-@endif
-   
-@if ($order->status =='Processing')
-    <a  onclick="return confirm('Are you sure to change status?')" href="{{route('order.status',[$order->id,"Completed"])}}" class="bg-green-600 text-white px-2 py-1 rounded-lg">Completed</a>
-
-@endif
-
-</td>
-
+                <td>{{  $loop->iteration }}</td>
+                <td>{{ $cart->product->name }}</td>
+                <td>{{ $cart->quantity }}</td>
+                <td>{{ $cart->product->price }}</td>
+                <td>{{ $cart->product->price*$cart->quantity }}</td>
+                @php
+                    $grandTotal = $grandTotal + $cart->product->price*$cart->quantity ;
+                @endphp
             </tr>
             @endforeach
+
+
+
         </tbody>
+        <tfoot>
+            <tr class="bg-blue-200 font-semibold">
+                <td colspan="4">
+                    Grand Total: 
+                </td>
+                <td> {{ $grandTotal }}</td>
+            </tr>
+        </tfoot>
     </table>
 
     {{-- backdrop-filter: blur(15px); --}}

@@ -48,10 +48,14 @@ class CartController extends Controller
         return redirect()->route('carts.index');
     }
 
-    public function destroy(Cart $cart)
+    public function destroy(string $id)
     {
         // Delete the cart item
+        $cart=Cart::find($id);
+
         $cart->delete();
+
+       
 
         return redirect()->route('carts.index');
     }

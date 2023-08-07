@@ -107,9 +107,17 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show(string $id)
     {
         //
+        $order=Order::find($id);
+
+        $carts=Cart::whereIn('id',explode(',',$order->cart_id))->get();
+
+        
+        return view('order.show',compact('order','carts'));
+
+
     }
 
     /**
