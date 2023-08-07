@@ -8,9 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'name',
-        'priority'
-    ];
+   protected $guarded;
+
+
+
+
+   public function user(){
+    return $this->belongsTo(User::class);
+   }
 }
 

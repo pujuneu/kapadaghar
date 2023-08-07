@@ -19,7 +19,7 @@
             @foreach($subcategories as $subcategory)
             <tr>
                 <td>{{$subcategory->priority}}</td>
-                <td>{{$category->name}}</td>
+                <td>{{$subcategory->name}}</td>
                 <td>
                     <a href="{{route('subcategory.edit',$subcategory->id)}}" class="bg-blue-600 text-white px-2 py-1 rounded shadow hover:shadow-blue-400">Edit</a>
                     {{-- <a onclick="return confirm('Are you sure to delete?')" href="{{route('subcategory.destroy',$subcategory->id)}}" class="bg-red-600 text-white px-2 py-1 rounded shadow hover:shadow-red-400">Delete</a> --}}

@@ -22,6 +22,23 @@
         </div>
     </div>
 
+    <div>
+        <div class="px-44 my-10">
+        <h3 class="text-lg font-bold">{{ $product->name }}</h3>
+                    <h3 class="text-lg font-thin">{{ $product->brand->name }}</h3>
+                    <p class="text-gray-600">
+                        @if ($product->oldprice != '')
+                            <span class="line-through">{{ $product->oldprice }}/-</span>
+                        @endif
+                        Rs. {{ $product->price }}/-
+                    </p>
+    </div>
+
+
+
+
+
+
 
 
 

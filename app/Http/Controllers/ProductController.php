@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Brands;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -14,6 +16,8 @@ class ProductController extends Controller
      */
     public function index()
     {
+
+        
         $products = Product::all();
         return view('product.index',compact('products'));
     }
@@ -23,7 +27,8 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('product.create',compact('categories'));
+        $brands = Brands::all();
+        return view('product.create',compact('categories','brands'));
     }
     /**
      * Store a newly created resource in storage.
@@ -32,7 +37,9 @@ class ProductController extends Controller
     {
         
         $data = $request->validate([
-            'category_id' => 'required',
+            'sub_category_id' => 'required',
+            
+            'brand_id' =>'required',
             'name' => 'required',
             'price' => 'numeric|required',
             'stock' => 'numeric|required',
@@ -78,7 +85,7 @@ class ProductController extends Controller
         
         $product = Product::find($id);
         $data = $request->validate([
-            'category_id' => 'required',
+            'sub_category_id' => 'required',
             'name' => 'required',
             'price' => 'numeric|required',
             'stock' => 'numeric|required',
@@ -102,10 +109,13 @@ class ProductController extends Controller
     /**
      *  * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request)
     {
-        $product = Product::find($product->dataid);
+        $product = Product::find($request->dataid);
+
         File::delete(public_path('images/products/'.$product->photopath));
+        // dd($product);
+        File::delete($product->photopath);
         $product->delete();
         return redirect(route('product.index'))->with('success','Product deleted succesfully');
     }

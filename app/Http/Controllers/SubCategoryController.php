@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-    
-    use Illuminate\Http\Request;
+
+use App\Models\Category;
+use Illuminate\Http\Request;
     use App\Models\SubCategory;
     
     class SubCategoryController extends Controller
@@ -15,16 +16,31 @@ namespace App\Http\Controllers;
        
         public function create()
     {
-        $subcategories = SubCategory::all();
-        return view('subcategory.create',compact('subcategories'));
+        $categories = Category::all();
+        return view('subcategory.create',compact('categories'));
+
     }
     
+
+    public function fetch(Request $request)
+    {
+
+        $subcategories = SubCategory::where('category_id',$request->category_id)->get();
+
+        return response()->json($subcategories);
+    }
+
     public function store(Request $request)
     {
         $data = $request->validate([
             'name' => 'required',
-            'priority' => 'required|numeric'
+            'priority' => 'required|numeric',
+            'category_id' =>'required|numeric',
         ]);
+
+        
+       
+
         SubCategory::create($data);
         return redirect(route('subcategory.index'))->with ('success','SubCategory created successfully');
     }
