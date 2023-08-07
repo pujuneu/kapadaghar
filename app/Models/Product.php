@@ -20,12 +20,6 @@ class Product extends Model
     }
     public function brand()
     {
-<<<<<<< HEAD
         return $this->belongsTo(Brand::class);
     }
-=======
-        return $this->belongsTo(Brands::class);
-    }
-
->>>>>>> 55d43e69aab00fe0d6f8bca32191066f5fe15706
 }

@@ -92,7 +92,6 @@ Route::middleware(['auth', 'isadmin'])->group(function () {
     Route::post('/brands/{id}/update', [BrandsController::class, 'update'])
       ->name('brands.update');
 
-<<<<<<< HEAD
   //Brands
 
   Route::get('/brands/index', [BrandsController::class, 'index'])->name('brands.index');
@@ -130,31 +129,6 @@ Route::middleware(['auth', 'isadmin'])->group(function () {
     ->name('order.destroy');
   Route::get('order', [OrderController::class, 'order']);
   Route::get('order', [OrderController::class, 'store']);
-=======
-    //Notice
-    Route::get('/notice', [NoticeController::class, 'index'])->name('notice.index');
-    Route::get('/notice/create', [NoticeController::class, 'create'])
-      ->name('notice.create');
-    Route::post('/notice/store', [NoticeController::class, 'store'])
-      ->name('notice.store');
-    Route::get('/notice/{id}/edit', [NoticeController::class, 'edit'])
-      ->name('notice.edit');
-    Route::post('/notice/{id}/update', [NoticeController::class, 'update'])
-      ->name('notice.update');
-    Route::post('/notice/destroy', [NoticeController::class, 'destroy'])
-      ->name('notice.destroy');
-
-    //order
-    Route::get('/order/index', [OrderController::class, 'index'])->name('order.index');
-    Route::get('/order/create', [OrderController::class, 'create'])
-    ->name('order.create');
-    Route::post('/order/destroy', [OrderController::class, 'destroy'])
-    ->name('order.destroy');
-    Route::get('order', [OrderController::class, 'order']);
-    Route::get('order', [OrderController::class, 'store']);
-    Route::get('/order/{id}/edit', [OrderController::class, 'edit'])
-    ->name('order.edit');
->>>>>>> 55d43e69aab00fe0d6f8bca32191066f5fe15706
 
     Route::get('/order/{id}/details', [OrderController::class, 'details'])->name('order.details');
     Route::get('/order/status/{id}/{status}', [OrderController::class, 'status'])->name('order.status');
