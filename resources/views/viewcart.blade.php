@@ -35,7 +35,7 @@
 
 
         @if ($carts->count()>0)
-        <table class="table table-fixed ">
+        <table class="table table-fixed " id="mytable">
 <thead>
     <tr>
         <th scope="col">SN</th>
@@ -56,7 +56,6 @@
         <td>{{$cart->product->name}}</td>
         <td>{{$cart->product->price}}</td>
         <td>
-
             <div class="flex w-full gap-2 justify-around">
                 <button type="button" >+</button>
                 <p class="px-2">{{$cart->quantity}}</p>
@@ -65,8 +64,15 @@
             </div>
         </td>
         <td>{{$cart->quantity*$cart->product->price}}</td>
-        <td><button class="bg-red-500 text-white rounded px-2 py-1 text-xs m-2">Remove From Cart</button></td>
-
+        <td><a class="bg-red-500 text-white rounded px-2 py-1 text-xs m-2" href="{{ route('carts.delete',$cart->id)}}">Remove</a></td>
+       
+        <script>
+            function removecart(x){
+                if(confirm('Are you sure you want to remove ?')){
+                            window.location.href = "/carts/"+x+"/delete";
+                }
+            }
+        </script>
         @php
             $grandTotal = ($cart->quantity*$cart->product->price)+$grandTotal;
         @endphp
@@ -76,16 +82,13 @@
 @endforelse
 </tbody>
 
-
 <tfoot>
     <tr scope="row">
         <th  colspan="5">Grand Total : </th>
         <th>{{ $grandTotal}}</th>
         <th><button class="bg-blue-500 w-full text-white rounded px-2 py-2 text-xs m-2" onclick="showcheckout()">Checkout</button></th>
     </tr>
-    <tr>
-        
-    </tr>
+    
 </tfoot>
 
 
@@ -149,7 +152,7 @@
 
     <script>
         const checkout = document.getElementById('checkout');
-
+        let table = new DataTable('#mytable');
         
         @if ($errors->any())
         checkout.classList.remove('hidden');
@@ -228,6 +231,9 @@ console.log(response);
                 // minimum transaction amount must be 10, i.e 1000 in paisa.
                 popup.show({amount: 1000});
             }
+
+
+           
         </script>
 
 @endsection

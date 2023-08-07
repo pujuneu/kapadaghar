@@ -172,7 +172,7 @@ Route::middleware(['auth', 'isadmin'])->group(function () {
     ->name('order.edit');
 >>>>>>> test
 
-    Route::get('/order/{id}/details', [OrderController::class, 'details'])->name('order.details');
+    Route::get('/order/{id}/show', [OrderController::class, 'show'])->name('order.show');
     Route::get('/order/status/{id}/{status}', [OrderController::class, 'status'])->name('order.status');
 
 <<<<<<< HEAD
@@ -240,6 +240,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/carts', [CartController::class, 'index'])->name('carts.index');
     Route::post('/carts', [CartController::class, 'store'])->name('carts.store');
+    Route::get('/carts/{id}/delete', [CartController::class, 'destroy'])->name('carts.delete');
+
+
     Route::get('/categories', [PagesController::class, 'category']);
     //route for rating & review
     Route::post('/add-rating', [UserRatingController::class, 'addRating']);
