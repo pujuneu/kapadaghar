@@ -79,17 +79,18 @@
             <div class="md:order-2">
                 <h3 class="text-lg font-bold mb-2">Contact Us</h3>
                 <p>123 Street, City</p>
-                <p>info@example.com</p>
-                <p>+1 123 456 7890</p>
+                <p>kapadaaghar@gmail.com</p>
+                <p>987578998</p>
             </div>
             <div class="md:order-1 mt-4 md:mt-0">
                 <h3 class="text-lg font-bold mb-2">Quick Links</h3>
                 <ul class="space-y-2">
+                    
                     <li><a href="/products">Products</a></li>
-                    <li><a href="/brands">Brands</a></li>
-                    <li><a href="/about-us">About Us</a></li>
-                    <li><a href="/contact-us">Contact</a></li>
-                    <li><a href="/cart">Cart</a></li>
+                    
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                    <li><a href="/carts">Cart</a></li>
                 </ul>
             </div>
         </div>

@@ -15,14 +15,17 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('product_id');
-            $table->integer('quantity');
-            $table->integer('status')->default(0);
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->integer('grand_amount');
+            $table->string('status')->default('pending');
+            $table->string('cart_id');
+            $table->string('payment_method');
+            $table->string('shipping_address');
+            $table->string('phone');
+            $table->date('date');
             $table->timestamps();
         
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+           
         });
     }
 

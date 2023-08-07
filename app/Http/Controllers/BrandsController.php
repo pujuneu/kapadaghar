@@ -24,6 +24,7 @@ class BrandsController extends Controller
             'name' => 'required',
             'priority' => 'required|numeric'
         ]);
+<<<<<<< HEAD
         Brand::create($data);
         return redirect(route('brands.index'))->with('success', 'Brands created successfully');
     }
@@ -34,6 +35,16 @@ class BrandsController extends Controller
         return view('brands.edit', compact('brands'));
     }
 
+=======
+       Brands::create($data);
+        return redirect(route('brands.index'))->with ('success','Brands created successfully');
+    }
+    public function edit($id)
+    {
+        $brands = Brands::find($id);
+        return view('brands.edit',compact('brands'));
+    }
+>>>>>>> 55d43e69aab00fe0d6f8bca32191066f5fe15706
     public function update(Request $request, $id)
     {
         $data = $request->validate([
@@ -43,7 +54,11 @@ class BrandsController extends Controller
         ]);
 
        
+<<<<<<< HEAD
         $brands=Brand::find($id);
+=======
+        $brands=Brands::find($id);
+>>>>>>> 55d43e69aab00fe0d6f8bca32191066f5fe15706
         $brands->update($data);
         return redirect(route('brands.index'))->with('success','Brands updated successfully');
         
@@ -51,6 +66,7 @@ class BrandsController extends Controller
     }
     public function destroy(Request $request)
     {
+<<<<<<< HEAD
      $brands = Brand::find($request->dataid);
      $brands->delete();
      return redirect(route('brands.index'))->with('success','Brands deleted succesfully');
@@ -59,3 +75,10 @@ class BrandsController extends Controller
  
  
 
+=======
+     $brands = Brands::find($request->dataid);
+     $brands->delete();
+     return redirect(route('brands.index'))->with('success','Brands deleted succesfully');
+    }
+}
+>>>>>>> 55d43e69aab00fe0d6f8bca32191066f5fe15706

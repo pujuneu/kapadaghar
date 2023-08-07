@@ -5,6 +5,16 @@
 
     <form action="{{route('subcategory.store')}}" method="POST" class="mt-5">
         @csrf
+        
+        <select name="category_id" id="" class="w-full rounded-lg border-gray-300 my-2">
+            @foreach($categories as $category)
+            <option value="{{$category->id}}">{{$category->name}}</option>
+            @endforeach
+        </select>
+        @error('category_id')
+        <p class="text-red-600 text-xs -mt-2">{{$message}}</p>
+    @enderror
+
         <input type="text" placeholder="SubCategory Name" name="name" class="w-full rounded-lg border-gray-300 my-2" value="{{old('name')}}">
         @error('name')
             <p class="text-red-600 text-xs -mt-2">{{$message}}</p>

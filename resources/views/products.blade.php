@@ -7,6 +7,11 @@
 
 
     <div class="container mx-auto py-12">
+        <div id="breadcrumb">
+<p class="font-thin my-2"> {{ $products->first()->category->name}} /  {{$products->first()->sub_category->name}}</p>
+
+<hr>
+        </div>
         <h2 class="text-3xl font-bold mb-6">Our Products</h2>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -16,6 +21,8 @@
                     <img src="{{ asset('images/products/' . $product->photopath) }}" alt="{{ $product->name }}"
                         class="w-48 h-48 object-cover mb-4 rounded-lg">
                     <h3 class="text-lg font-bold">{{ $product->name }}</h3>
+                    <h3 class="text-lg font-thin">{{ $product->brand->name }}</h3>
+
                     <p class="text-gray-600">
                         @if ($product->oldprice != '')
                             <span class="line-through">{{ $product->oldprice }}/-</span>

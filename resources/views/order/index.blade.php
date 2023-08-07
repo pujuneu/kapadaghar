@@ -11,21 +11,37 @@
 
     <table id="mytable" class="display">
         <thead>
-            <th>Order</th>
-            <th>Order Name</th>
+            <th>SN</th>
+            <th>Customer Name</th>
+            <th>Total Amount</th>
+            <th>Order Date</th>
+            <th>Status</th>
             <th>Action</th>
         </thead>
         <tbody>
             @foreach($orders as $order)
             <tr>
-                <td>{{$order->priority}}</td>
-                <td>{{$order->name}}</td>
-                <td>
-                    <a href="{{route('order.edit',$order->id)}}" class="bg-blue-600 text-white px-2 py-1 rounded shadow hover:shadow-blue-400">Edit</a>
-                    {{-- <a onclick="return confirm('Are you sure to delete?')" href="{{route('order.destroy',$order->id)}}" class="bg-red-600 text-white px-2 py-1 rounded shadow hover:shadow-red-400">Delete</a> --}}
+                <td>{{ $loop->iteration }}</td>
+                <td>{{$order->user->name}}</td>
+                <td>{{$order->grand_amount}}</td>
+                <td>{{$order->date}}</td>
+                <td>{{$order->status}}</td>
+              
+<td>
+    <a href="{{route('order.details',$order->id)}}" class="bg-blue-600 text-white px-2 py-1 rounded-lg">View Details</a>
 
-                    <a onclick="showDelete('{{$order->id}}')" class="bg-red-600 text-white px-2 py-1 rounded shadow hover:shadow-red-400 cursor-pointer">Delete</a>
-                </td>
+@if ($order->status =='Pending')
+<a  onclick="return confirm('Are you sure to change status?')" href="{{route('order.status',[$order->id,"Processing"])}}" class="bg-green-600 text-white px-2 py-1 rounded-lg">Processing</a>
+
+@endif
+   
+@if ($order->status =='Processing')
+    <a  onclick="return confirm('Are you sure to change status?')" href="{{route('order.status',[$order->id,"Completed"])}}" class="bg-green-600 text-white px-2 py-1 rounded-lg">Completed</a>
+
+@endif
+
+</td>
+
             </tr>
             @endforeach
         </tbody>
