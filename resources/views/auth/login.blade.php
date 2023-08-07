@@ -14,8 +14,8 @@
         <div class="flex justify-center items-center">
             <div class="w-full text-center">
                 <h2 class="font-bold text-4xl"Welcome to Kapada Ghar</h2>
-                    <img src="http://bitmapitsolution.com/images/logo/logo.png" alt="" 
-                    class="mx-auto my-4 w-40">
+                    <img src="https://images.vexels.com/content/262059/preview/clothing-online-store-t-shirt-gradient-logo-93eb39.png" alt="" 
+                    class="mx-auto my-4 rounded-full w-32 h-32 object-cover">
                     
                         
                      <form action="{{route('login')}}"method="POST">

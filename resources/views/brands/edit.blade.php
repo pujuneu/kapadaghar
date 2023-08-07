@@ -3,7 +3,7 @@
     <h2 class="font-bold text-4xl text-blue-700">Edit Brands</h2> 
     <hr class="h-1 bg-blue-200">
 
-    <form action="{{route('brands.update',$category->id)}}" method="POST" class="mt-5">
+    <form action="{{route('brands.update',$brands->id)}}" method="POST" class="mt-5">
         @csrf
         <input type="text" placeholder="Brands Name" name="name" class="w-full rounded-lg border-gray-300 my-2" value="{{$brands->name}}">
         @error('name')

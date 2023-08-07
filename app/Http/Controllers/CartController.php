@@ -10,7 +10,8 @@ class CartController extends Controller
     public function index()
     {
         // Retrieve all cart items
-        $carts = Cart::where('user_id', auth()->user()->id)->get();
+        $carts = Cart::where('user_id', auth()->user()->id)->where('is_ordered',false)->get();
+
         return view('viewcart', compact('carts'));
     }
 
@@ -18,7 +19,7 @@ class CartController extends Controller
     {
         // Check if the cart item already exists for the user and product
         $existingCart = Cart::where('user_id', auth()->user()->id)
-            ->where('product_id', $request->product_id)
+            ->where('product_id', $request->product_id)->where('is_ordered',false)
             ->first();
 
         if ($existingCart) {
@@ -29,6 +30,7 @@ class CartController extends Controller
             // Create a new cart item if it doesn't exist
             $cart = new Cart;
             $cart->user_id = auth()->user()->id;
+            $cart->is_ordered = false;
             $cart->product_id = $request->product_id;
             $cart->quantity = $request->quantity;
             $cart->save();
