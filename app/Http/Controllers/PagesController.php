@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class PagesController extends Controller
 
@@ -33,6 +35,13 @@ class PagesController extends Controller
         return view('viewproduct', compact('product', 'categories'));
     }
 
+    public function showprofile(): View
+    {
+        $user = auth()->user();
+
+        return view('profile', compact('user'));
+    }
+
     public function products(Request $request)
     {
         // dd($request);
@@ -49,7 +58,16 @@ class PagesController extends Controller
     }
 
     
-    
+    public function logout()
+    {
+        Auth::guard('web')->logout();
+
+        session()->invalidate();
+
+        session()->regenerateToken();
+
+        return redirect('/');
+    }
 
 
 

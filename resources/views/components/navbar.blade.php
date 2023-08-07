@@ -3,8 +3,8 @@
 
 
 
-    <nav class="navbar">
-        <ul class="menu">
+    <nav class="navbar ">
+        <ul class="menu flex justify-end">
             <li><a href="/">Home</a></li>
 
 
@@ -17,12 +17,23 @@
 
 
             </li>
-            @if(auth() -> user())
+            @if (auth()->user())
                 <li><a href="/carts">Cart <sup>{{ $cartcount }}</sup></a></li>
             @endif
 
 
-            @if (auth()->user())
+            @auth
+                <li><x-user-dropdown /></li>
+
+            @endauth
+
+            @guest
+
+                <li><a href="/login">Login</a></li>
+
+            @endguest
+
+            {{-- @if (auth()->user())
                 <li><a href="">{{ auth()->user()->name }}</a></li>
                 <li>
                     <form class="inline text-white" action="{{ route('logout') }}" method="POST">
@@ -30,7 +41,7 @@
                         <button type="submit">OUT</button>
                     </form>
                 </li>
-            @endif
+            @endif --}}
 
 
         </ul>
@@ -129,5 +140,4 @@
         </div>
     </div>
 
-    <script></script>
 </div>

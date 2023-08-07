@@ -35,4 +35,10 @@
         </div>
 </div>
 
+<div>
+
+
+    <x-chart />
+</div>
+
 @endsection
