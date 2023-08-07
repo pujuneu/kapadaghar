@@ -9,14 +9,8 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
-<<<<<<< HEAD
-use App\Http\Controllers\PagesController;
-use App\Http\Controllers\CartController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrderController;
-=======
-use App\Http\Controllers\SubCategoryController;
->>>>>>> 55d43e69aab00fe0d6f8bca32191066f5fe15706
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -68,7 +62,6 @@ Route::middleware(['auth', 'isadmin'])->group(function () {
     Route::post('/subcategory/{id}/update', [SubCategoryController::class, 'update'])
     ->name('subcategory.update');
 
-<<<<<<< HEAD
   //Sub-Category
   Route::get('/subcategory/index', [SubCategoryController::class, 'index'])->name('subcategory.index');
   Route::get('/subcategory/create', [SubCategoryController::class, 'create'])->name('subcategory.create');
@@ -77,9 +70,7 @@ Route::middleware(['auth', 'isadmin'])->group(function () {
     ->name('subcategory.store');
   Route::get('/subcategory/{id}/edit', [SubCategoryController::class, 'edit'])->name('subcategory.edit');
   Route::post('/subcategory{id}/update', [SubCategoryController::class, 'update'])->name('subcategory.update');
-=======
     //Brands
->>>>>>> 55d43e69aab00fe0d6f8bca32191066f5fe15706
 
     Route::get('/brands/index', [BrandsController::class, 'index'])->name('brands.index');
     Route::get('/brands/create', [BrandsController::class, 'create'])->name('brands.create');
@@ -133,7 +124,6 @@ Route::middleware(['auth', 'isadmin'])->group(function () {
     Route::get('/order/{id}/details', [OrderController::class, 'details'])->name('order.details');
     Route::get('/order/status/{id}/{status}', [OrderController::class, 'status'])->name('order.status');
 
-<<<<<<< HEAD
   //Gallery
   Route::get('/gallery', [Gallerycontroller::class, 'index'])->name('gallery.index');
   Route::get('/gallery/create', [GalleryController::class, 'create'])
@@ -156,12 +146,11 @@ Route::middleware(['auth', 'isadmin'])->group(function () {
   Route::get('/carts', [CartController::class, 'index'])->name('carts.index');
   Route::post('/carts', [CartController::class, 'store'])->name('carts.store');
   Route::get('/category/{category}', [PagesController::class, 'category'])->name('category');
-
+  }
 
   //Product
 
   Route::middleware('isadmin')->group(function () {
-=======
     //Gallery
     Route::get('/gallery', [Gallerycontroller::class, 'index'])->name('gallery.index');
     Route::get('/gallery/create', [GalleryController::class, 'create'])
@@ -174,7 +163,6 @@ Route::middleware(['auth', 'isadmin'])->group(function () {
       ->name('gallery.update');
     Route::post('/gallery/destroy', [GalleryController::class, 'destroy'])
       ->name('gallery.destroy');
->>>>>>> 55d43e69aab00fe0d6f8bca32191066f5fe15706
 
     Route::get('/product', [ProductController::class, 'index'])->name('product.index');
     Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
@@ -219,3 +207,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+}
