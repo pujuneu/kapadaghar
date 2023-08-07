@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'address',
+        'phone',
     ];
 
     /**
@@ -33,7 +35,8 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function carts(){
+    public function carts()
+    {
         return $this->hasMany(Cart::class);
     }
 

@@ -1,47 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+<x-guest-layout>
 
-</head>
-<body>
-    <div class="grid grid-cols-2">
-       <img src="https://pathwayport.com/saasland/images/login@4x.png" alt="" class="h-screen">
-        <div class="flex justify-center items-center">
-            <div class="w-full text-center">
-                <h2 class="font-bold text-4xl"Welcome to Kapada Ghar</h2>
-                    <img src="https://images.vexels.com/content/262059/preview/clothing-online-store-t-shirt-gradient-logo-93eb39.png" alt="" 
-                    class="mx-auto my-4 rounded-full w-32 h-32 object-cover">
-                    
-                        
-                     <form action="{{route('login')}}"method="POST">
-                            @csrf
-                            <input type="email" name="email" placeholder="Enter Email" 
-                            class="p-4 rounded-lg w-8/12 my-4">
-                            <input type="password" name="password" placeholder="Enter Password" 
-                            class="p-4 rounded-lg w-8/12 my-4">
+    <div class="grid grid-cols-2 items-center justify-items-center">
 
-                            <input type="submit" value="Login" 
-                            class="bg-blue-600 text-white w-4/12 py-3 mt-4 rounded-lg block mx-auto cursor-pointer">
+        <div class="min-h-[100%] p-24">
+            <img src="https://pathwayport.com/saasland/images/login@4x.png" alt="" class="h-[50%] object-contain">
+        </div>
 
-                            <a href="/register">
-                                <input type=""button" value="Register"
-                                class="bg-blue-600 text white w-4/12 py-3 mt-4 rounded-lg block mx-auto cursor-pointer">
-                    </form>
+        <div class=" w-full px-10">
+
+            <form action="{{ route('login') }}"method="POST">
+                <legend class="text-center pb-2 text-2xl font-bold ">Login</legend>
+                @csrf
+
+                <div>
+                    <x-input-label for="email" :value="__('Email')" />
+                    <input type="email" name="email" placeholder="Enter Email" class="p-4 rounded-lg w-full my-4">
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
+                <div class="mt-4">
+                    <x-input-label for="password" :value="__('Password')" />
+
+                    <x-text-input id="password" placeholder="Enter password" class="p-4 rounded-lg w-full my-4"
+                        type="password" name="password" required autocomplete="new-password" />
+
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                </div>
+
+
+                {{-- <input type="password" name="password" placeholder="Enter Password" class="p-4 rounded-lg w-full my-4"> --}}
+
+                <input type="submit" value="Login"
+                    class="red text-white w-full py-3 my-1 rounded-lg block mx-auto cursor-pointer">
+
+                <span class=" w-full text-center text-sm  rounded-lg block mx-auto">Not have an Account ? </span>
+                <a href="/register">
+                    <input type="button" value="Register"
+                        class="red text-white w-full py-3 my-1 rounded-lg block mx-auto cursor-pointer">
+            </form>
         </div>
     </div>
 
 
 
 
-
-
-    
-</body>
-</html>
+</x-guest-layout>

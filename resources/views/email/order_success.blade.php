@@ -23,20 +23,21 @@
             </p>
             <p style="background-color:#ddd; padding: 10px 30px;">
 
-                <p>
-					Dear {{ auth()->user()->name }},
-				</p>
-				
-                Thank you for choosing <strong>KAPADA GHAR</strong> for ordering your product. We are pleased to inform you that your product
-                has been ordered successfully.
-                We appreciate your business and are committed to providing you with a quality customer experience. If
-                you have any questions or concerns, please do not hesitate to contact us.
-				<br>
-                Thank you again for your order, and we look forward to serving you in the future.
-				<br><br>
-                Best regards, <br>
-                The <strong>KAPADA GHAR</strong> Team
-			</p>
+            <p>
+                Dear {{ auth()->user()->name }},
+            </p>
+
+            Thank you for choosing <strong>KAPADA GHAR</strong> for ordering your product. We are pleased to inform you
+            that your product
+            has been ordered successfully.
+            We appreciate your business and are committed to providing you with a quality customer experience. If
+            you have any questions or concerns, please do not hesitate to contact us.
+            <br>
+            Thank you again for your order, and we look forward to serving you in the future.
+            <br><br>
+            Best regards, <br>
+            The <strong>KAPADA GHAR</strong> Team
+            </p>
         </div>
     </div>
 </body>

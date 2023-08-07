@@ -18,6 +18,7 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::all();
+
         return view('order.index', compact('orders'));
     }
 
@@ -29,6 +30,7 @@ class OrderController extends Controller
     public function create()
     {
         $order = Order::all();
+
         return view('order.create', collect('order'));
     }
 
@@ -36,39 +38,32 @@ class OrderController extends Controller
     {
         $orders = Order::where('user_id', '=', auth()->user()->id)->get();
 
-
         return view('userorders', compact('orders'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $request->validate([
             'shipping_address' => 'required',
-            'phone' => 'required','numeric'
+            'phone' => 'required', 'numeric',
         ]);
-        
-
 
         $data = $request->toArray();
-
 
         $data['date'] = date('Y-m-d');
         $data['status'] = 'Pending';
         $data['payment_method'] = 'COD';
         $carts = Cart::where('user_id', auth()->user()->id)->where('is_ordered', false)->get();
 
-
         $ids = $carts->pluck('id')->toArray();
         $data['cart_id'] = implode(',', $ids);
 
         $data['user_id'] = auth()->user()->id;
-
 
         Order::create($data);
         Cart::whereIn('id', $ids)->update(['is_ordered' => true]);
@@ -84,10 +79,10 @@ class OrderController extends Controller
         //  });
         $mailData = [
             'title' => 'New Order Placed',
-            'view' => 'email.order_success'
+            'view' => 'email.order_success',
         ];
 
-        Mail::to(auth() -> user() -> email)->send(new Mailer($mailData));
+        // Mail::to(auth()->user()->email)->send(new Mailer($mailData));
 
         return redirect()->route('order.myorders');
     }
@@ -97,14 +92,13 @@ class OrderController extends Controller
         $order = Order::find($id);
         $order->status = $status;
         $order->save();
-        return redirect(route('order.index'))->with('success', 'Status changed to ' . $status);
-    }
 
+        return redirect(route('order.index'))->with('success', 'Status changed to '.$status);
+    }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
     public function show(Order $order)
@@ -115,7 +109,6 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
     public function edit(Order $order)
@@ -126,8 +119,6 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Order $order)
@@ -135,44 +126,38 @@ class OrderController extends Controller
         //
     }
 
-
-    public function khaltiverify(Request $request){
-
-
-        $args = http_build_query(array(
+    public function khaltiverify(Request $request)
+    {
+        $args = http_build_query([
             'token' => 'QUao9cqFzxPgvWJNi9aKac',
-            'amount'  => 1000
-          ));
-          
-          $url = "https://khalti.com/api/v2/payment/verify/";
-          
-          # Make the call using API.
-          $ch = curl_init();
-          curl_setopt($ch, CURLOPT_URL, $url);
-          curl_setopt($ch, CURLOPT_POST, 1);
-          curl_setopt($ch, CURLOPT_POSTFIELDS,$args);
-          curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-          
-          $headers = ['Authorization: Key test_secret_key_231c5ad323464132af2b824cf1a03efe'];
-          curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-          
-          // Response
-          $response = curl_exec($ch);
-          $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-          curl_close($ch);
+            'amount' => 1000,
+        ]);
 
+        $url = 'https://khalti.com/api/v2/payment/verify/';
 
-          if($status_code==200){
+        // Make the call using API.
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $args);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
+        $headers = ['Authorization: Key test_secret_key_231c5ad323464132af2b824cf1a03efe'];
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
+        // Response
+        $response = curl_exec($ch);
+        $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        if ($status_code == 200) {
             return response()->json($request);
-          }
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
     public function destroy(Order $order)

@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -19,9 +18,10 @@ class Mailer extends Mailable
      * @return void
      */
     public $mailData;
+
     public function __construct($mailData)
     {
-        $this -> mailData = $mailData;
+        $this->mailData = $mailData;
     }
 
     /**
@@ -32,7 +32,7 @@ class Mailer extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: $this -> mailData['title'],
+            subject: $this->mailData['title'],
         );
     }
 
@@ -44,7 +44,7 @@ class Mailer extends Mailable
     public function content()
     {
         return new Content(
-            view: $this -> mailData['view'],
+            view: $this->mailData['view'],
         );
     }
 
