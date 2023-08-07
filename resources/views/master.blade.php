@@ -28,11 +28,14 @@
 
 <body>
 <<<<<<< HEAD
+<<<<<<< HEAD
     @php
     $categories = App\Models\Category::all();
 @endphp
     <div class="flex px-24 justify-between bg-gray-300 p-2 text-lg">
 =======
+=======
+>>>>>>> test
     <div class="min-h-screen flex flex-col justify-between">
         <x-navbar />
 
@@ -40,6 +43,7 @@
 
 
         <x-footer />
+<<<<<<< HEAD
 >>>>>>> 55d43e69aab00fe0d6f8bca32191066f5fe15706
 
     </div>
@@ -92,6 +96,10 @@
 
 =======
 >>>>>>> 55d43e69aab00fe0d6f8bca32191066f5fe15706
+=======
+
+    </div>
+>>>>>>> test
 </body>
 
 </html>

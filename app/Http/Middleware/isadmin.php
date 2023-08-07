@@ -15,6 +15,10 @@ class isadmin
      */
     public function handle(Request $request, Closure $next)
     {
+<<<<<<< HEAD
+=======
+        
+>>>>>>> test
         if (auth()->user()->role == 'admin') {
             return $next($request);
         } else {

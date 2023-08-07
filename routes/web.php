@@ -9,8 +9,12 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+<<<<<<< HEAD
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OrderController;
+=======
+use App\Http\Controllers\SubCategoryController;
+>>>>>>> test
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,9 +52,15 @@ Route::middleware(['auth', 'isadmin'])->group(function () {
     // Route::get('/category/{id}/destroy',[CategoryController::class,'destroy'])->name('category.destroy');
 
     //Route::get('/category/{id}/destroy',[CategoryController::class,'destroy'])->name('category.destroy');
+<<<<<<< HEAD
 
     Route::post('/category/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
 
+=======
+
+    Route::post('/category/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
+
+>>>>>>> test
     //Sub-Category
     Route::get('/subcategory/index', [SubCategoryController::class, 'index'])->name('subcategory.index');
     Route::get('/subcategory/create', [SubCategoryController::class, 'create'])->name('subcategory.create');
@@ -61,6 +71,7 @@ Route::middleware(['auth', 'isadmin'])->group(function () {
     ->name('subcategory.edit');
     Route::post('/subcategory/{id}/update', [SubCategoryController::class, 'update'])
     ->name('subcategory.update');
+<<<<<<< HEAD
 
   //Sub-Category
   Route::get('/subcategory/index', [SubCategoryController::class, 'index'])->name('subcategory.index');
@@ -88,9 +99,20 @@ Route::middleware(['auth', 'isadmin'])->group(function () {
   Route::get('/brands/index', [BrandsController::class, 'index'])->name('brands.index');
   Route::get('/brands/create', [BrandsController::class, 'create'])->name('brands.create');
   Route::post('/brands/store', [BrandsController::class, 'store'])
+=======
+
+    //Brands
+
+    Route::get('/brands/index', [BrandsController::class, 'index'])->name('brands.index');
+    Route::get('/brands/create', [BrandsController::class, 'create'])->name('brands.create');
+    Route::post('/brands/destroy', [BrandsController::class, 'destroy'])
+      ->name('brands.destroy');
+    Route::post('/brands/store', [BrandsController::class, 'store'])
+>>>>>>> test
     ->name('brands.store');
   Route::get('/brands/{id}/edit', [BrandsController::class, 'edit'])
     ->name('brands.edit');
+<<<<<<< HEAD
   Route::post('/brands/{id}/update', [BrandsController::class, 'update'])
     ->name('brands.update');
   Route::post('/brands/destroy', [BrandsController::class, 'destroy'])
@@ -108,8 +130,25 @@ Route::middleware(['auth', 'isadmin'])->group(function () {
     ->name('notice.update');
   Route::post('/notice/destroy', [NoticeController::class, 'destroy'])
     ->name('notice.destroy');
+=======
+    Route::post('/brands/{id}/update', [BrandsController::class, 'update'])
+      ->name('brands.update');
+>>>>>>> test
 
+    //Notice
+    Route::get('/notice', [NoticeController::class, 'index'])->name('notice.index');
+    Route::get('/notice/create', [NoticeController::class, 'create'])
+      ->name('notice.create');
+    Route::post('/notice/store', [NoticeController::class, 'store'])
+      ->name('notice.store');
+    Route::get('/notice/{id}/edit', [NoticeController::class, 'edit'])
+      ->name('notice.edit');
+    Route::post('/notice/{id}/update', [NoticeController::class, 'update'])
+      ->name('notice.update');
+    Route::post('/notice/destroy', [NoticeController::class, 'destroy'])
+      ->name('notice.destroy');
 
+<<<<<<< HEAD
   //order
   Route::get('/order/index', [OrderController::class, 'index'])->name('order.index');
   Route::get('/order/create', [OrderController::class, 'create'])
@@ -120,10 +159,23 @@ Route::middleware(['auth', 'isadmin'])->group(function () {
     ->name('order.destroy');
   Route::get('order', [OrderController::class, 'order']);
   Route::get('order', [OrderController::class, 'store']);
+=======
+    //order
+    Route::get('/order/index', [OrderController::class, 'index'])->name('order.index');
+    Route::get('/order/create', [OrderController::class, 'create'])
+    ->name('order.create');
+    Route::post('/order/destroy', [OrderController::class, 'destroy'])
+    ->name('order.destroy');
+    Route::get('order', [OrderController::class, 'order']);
+    Route::get('order', [OrderController::class, 'store']);
+    Route::get('/order/{id}/edit', [OrderController::class, 'edit'])
+    ->name('order.edit');
+>>>>>>> test
 
     Route::get('/order/{id}/details', [OrderController::class, 'details'])->name('order.details');
     Route::get('/order/status/{id}/{status}', [OrderController::class, 'status'])->name('order.status');
 
+<<<<<<< HEAD
   //Gallery
   Route::get('/gallery', [Gallerycontroller::class, 'index'])->name('gallery.index');
   Route::get('/gallery/create', [GalleryController::class, 'create'])
@@ -151,6 +203,8 @@ Route::middleware(['auth', 'isadmin'])->group(function () {
   //Product
 
   Route::middleware('isadmin')->group(function () {
+=======
+>>>>>>> test
     //Gallery
     Route::get('/gallery', [Gallerycontroller::class, 'index'])->name('gallery.index');
     Route::get('/gallery/create', [GalleryController::class, 'create'])
@@ -195,9 +249,18 @@ Route::middleware('auth')->group(function () {
     Route::post('/order/store', [OrderController::class, 'store'])
     ->name('order.store');
 
+<<<<<<< HEAD
     //Product
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+=======
+    
+    Route::post('/dashboard/changemonth',[DashboardController::class,'changemonth'])->name('changemonth');  
+
+    //Product
+
+    Route::get('/profile', [PagesController::class, 'showprofile'])->name('profile.index');
+>>>>>>> test
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
@@ -207,4 +270,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+<<<<<<< HEAD
 });
+=======
+>>>>>>> test

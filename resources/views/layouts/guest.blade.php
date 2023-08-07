@@ -9,9 +9,22 @@
     <title>kapada ghar</title>
     <link rel="stylesheet" href="{{ asset('mycss/style.css') }}">
 
+<<<<<<< HEAD
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+=======
+    
+
+    <link rel="stylesheet" href="{{ asset('datatable/datatables.css') }}">
+    <script src="{{ asset('datatable/jquery-3.6.0.js') }}"></script>
+    <script src="{{ asset('datatable/datatables.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+>>>>>>> test
     <style>
         .red {
             background-color: red;

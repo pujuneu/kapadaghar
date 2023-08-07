@@ -6,6 +6,10 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+<<<<<<< HEAD
+=======
+use Illuminate\View\View;
+>>>>>>> test
 
 class PagesController extends Controller
 {
@@ -35,6 +39,7 @@ class PagesController extends Controller
         return view('viewproduct', compact('product', 'categories'));
     }
 
+<<<<<<< HEAD
     //controller for route /category/{id}
     public function category($id){
         $category = Category::find($id);
@@ -43,6 +48,15 @@ class PagesController extends Controller
     }
 
    
+=======
+    public function showprofile(): View
+    {
+        $user = auth()->user();
+
+        return view('profile', compact('user'));
+    }
+
+>>>>>>> test
     public function products(Request $request)
     {
         // dd($request);
@@ -60,9 +74,24 @@ class PagesController extends Controller
         return view('categories', compact('categories'));
     }
 
+<<<<<<< HEAD
     public function logout()
     {
         Auth::guard('web')->logout();
+=======
+    
+    public function logout()
+    {
+        Auth::guard('web')->logout();
+
+        session()->invalidate();
+
+        session()->regenerateToken();
+
+        return redirect('/');
+    }
+
+>>>>>>> test
 
         session()->invalidate();
 
