@@ -4,6 +4,7 @@
 
 
     <nav class="navbar ">
+        <div class="flex"></div>
         <ul class="menu flex justify-end">
             <li><a href="/">Home</a></li>
 
