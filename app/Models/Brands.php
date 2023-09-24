@@ -12,4 +12,9 @@ class Brands extends Model
         'name',
         'priority'
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

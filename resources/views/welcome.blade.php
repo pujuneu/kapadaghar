@@ -46,7 +46,8 @@
             <div class="flex flex-col items-center justify-center space-y-8">
                 <h1 class="text-4xl font-bold text-center">Welcome to Kapada Ghar</h1>
                 <p class="text-xl text-center">Discover the latest fashion trends and shop with confidence.</p>
-                <a href="/products" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg">Explore
+                <a href="/search?query="
+                    class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg">Explore
                     Products</a>
             </div>
         </div>
@@ -85,14 +86,21 @@
             <div class="md:order-1 mt-4 md:mt-0">
                 <h3 class="text-lg font-bold mb-2">Quick Links</h3>
                 <ul class="space-y-2">
-                    
-                    <li><a href="/products">Products</a></li>
-                    
+
+                    <li><a href="/search?query=">Products</a></li>
+
                     <li><a href="/about">About Us</a></li>
                     <li><a href="/contact">Contact Us</a></li>
                     <li><a href="/carts">Cart</a></li>
                 </ul>
             </div>
+        </div>
+        <div class="container mx-auto">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d340.67109483868006!2d84.1266053880248!3d27.644145637641994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399451e91900ebc7%3A0x56c7915d47df8056!2sNawalpur%20hotel%20and%20lodge!5e0!3m2!1sen!2snp!4v1695569646832!5m2!1sen!2snp"
+                height="450" style="border:0;" allowfullscreen="" loading="lazy" class="w-full"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+
         </div>
         <div class="container mx-auto mt-8">
             <p class="text-center">© 2023 Kapada Ghar. All rights reserved.</p>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brands;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -9,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class PagesController extends Controller
-
 {
     public function home()
     {
@@ -46,8 +46,26 @@ class PagesController extends Controller
     {
         // dd($request);
         // Retrieve all products
-        $products = Product::where('sub_category_id',$request->sub_category_id)->paginate(5);
+        $products = Product::where('sub_category_id', $request->sub_category_id)->paginate(5);
         return view('products', compact('products'));
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->query()['query'];
+        $matchedProducts = Product::where('name', 'like', "%{$query}%")->get();
+
+        //search according to the brand name query
+        $brands = Brands::where('name', 'like', "%{$query}%")->get();
+        $brandIds = $brands->pluck('id');
+
+        $brandProducts = Product::whereIn('brand_id', $brandIds)->get();
+
+        $products = $matchedProducts->union($brandProducts);
+
+        //$brandProducts = $brand->products();
+        //return response($brandProducts);
+        return view('search', compact('products'));
     }
 
     public function categories()
@@ -57,7 +75,7 @@ class PagesController extends Controller
         return view('categories', compact('categories'));
     }
 
-    
+
     public function logout()
     {
         Auth::guard('web')->logout();
