@@ -1,8 +1,11 @@
 <div>
     <!-- Always remember that you are absolutely unique. Just like everyone else. - Margaret Mead -->
 
-    <nav class="navbar ">
-        <div class="flex"></div>
+    <nav class="navbar flex justify-between items-center">
+        <form class="flex" action="/search">
+            <input type="search" name="query" placeholder="Enter a query" class="border-2 border-slate-600">
+            <input type="submit" value="Search" class="border-0 bg-slate-600 text-white px-6">
+        </form>
         <ul class="menu flex justify-end">
             <li><a href="/">Home</a></li>
 
