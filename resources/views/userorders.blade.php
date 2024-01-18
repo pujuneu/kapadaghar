@@ -16,7 +16,6 @@
                 <th>Ordered Date</th>
                 <th>Total Amount</th>
                 <th>Status</th>
-                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -26,13 +25,7 @@
                 <td>{{$order->date}}</td>
                 <td>{{$order->grand_amount}}</td>
                 <td>{{$order->status}}</td>
-                <td>
-                    <div class="flex gap-6">
-                        <a href="" class="bg-blue-500 text-sm text-white w-full py-2 px-2 rounded">Show Items</a>
-                   
-              
-                    </div>
-                </td>
+               
             </tr>
             @endforeach
         </tbody>
